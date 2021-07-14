@@ -58,7 +58,6 @@ exports.updateEvent = (req, res) => {
     db.collection('events').doc(name).update({
         ...req.body,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            "dress-code": "casual"
     })
     .then( () => res.status(202).send('Event updated'))
     .catch(err => res.status(500).send('Could not update event'))
