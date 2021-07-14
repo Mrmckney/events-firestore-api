@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const { getEvents, createEvent, oneEvent, deleteEvent, updateEvent } = require('./src/events')
+const { getEvents, createEvent, oneEvent, deleteEvent, updateEvent, searchEvent } = require('./src/events')
 
 const app = express()
 app.use(express.json())
@@ -8,7 +8,7 @@ app.use(cors())
 
 app.post('/events', createEvent) 
 
-// app.get('/events/search', searchEvent)
+app.get('/events/search', searchEvent)
 app.get('/events/:id', oneEvent)
 app.get('/events', getEvents)
 

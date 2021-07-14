@@ -63,19 +63,19 @@ exports.updateEvent = (req, res) => {
     .catch(err => res.status(500).send('Could not update event'))
 }
 
-// exports.searchEvent = (req, res) => {   
-//     const { name } = req.query
-//     const db = connectDb()
+exports.searchEvent = (req, res) => {   
+    const { name } = req.query
+    const db = connectDb()
     
-//     db.collection('events').where('name', '==', name).get()
-//         .then(searchEvents => {
-//             const matches = searchEvents.docs.map(doc => {
-//                 let match = doc.data()
-//                 match.id = doc.id
-//                 return match
-//             })
-//             res.send(matches)
-//         })
-//         .catch(err => res.status(500).send('Can not get event'))
+    db.collection('events').where('name', '==', name).get()
+        .then(searchEvents => {
+            const matches = searchEvents.docs.map(doc => {
+                let match = doc.data()
+                match.id = doc.id
+                return match
+            })
+            res.send(matches)
+        })
+        .catch(err => res.status(500).send('Can not get event'))
         
-// }
+}
